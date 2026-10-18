@@ -1151,14 +1151,14 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Text(
                             questionTypeLabel,
                             style: const TextStyle(
                               fontSize: 18,
@@ -1167,24 +1167,10 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                               color: Color(0xFF325C89),
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Question ${_currentIndex + 1} of $questionCount',
-                            style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xFF1F3B5A),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (_timedMode)
-                      Flexible(
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Container(
-                            margin: const EdgeInsets.only(left: 8, right: 8, top: 4),
+                        ),
+                        if (_timedMode)
+                          Container(
+                            margin: const EdgeInsets.only(left: 8),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 12,
                               vertical: 8,
@@ -1229,105 +1215,62 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                               ),
                             ),
                           ),
-                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Question ${_currentIndex + 1} out of $questionCount',
+                      style: const TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF1F3B5A),
                       ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 2),
-                      child: InkWell(
-                        onTap: () {
-                          showDialog<void>(
-                            context: context,
-                            builder: (context) => Dialog(
-                              backgroundColor: const Color(0xFFF8FBFE),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18),
+                    ),
+                    const SizedBox(height: 12),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(questionCount, (index) {
+                          final isAnswered = _selectedAnswers.containsKey(index);
+                          final isCurrent = index == _currentIndex;
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _currentIndex = index;
+                              });
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 42,
+                              height: 42,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: isCurrent
+                                    ? const Color(0xFF0D4BCC)
+                                    : isAnswered
+                                    ? const Color(0xFFEAF2FF)
+                                    : Colors.white,
+                                border: Border.all(
+                                  color: isCurrent
+                                      ? const Color(0xFF0D4BCC)
+                                      : const Color(0xFFCBD8E2),
+                                  width: isCurrent ? 2 : 1,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
                               ),
-                              child: ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 440),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(18),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Wrap(
-                                        spacing: 10,
-                                        runSpacing: 10,
-                                        children: List.generate(questionCount, (index) {
-                                          final isAnswered = _selectedAnswers.containsKey(index);
-                                          final isCurrent = index == _currentIndex;
-                                          return InkWell(
-                                            onTap: () {
-                                              Navigator.of(context).pop();
-                                              setState(() {
-                                                _currentIndex = index;
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 40,
-                                              height: 40,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                color: isAnswered
-                                                    ? const Color(0xFF0D4BCC)
-                                                    : Colors.white,
-                                                border: Border.all(
-                                                  color: isCurrent
-                                                      ? const Color(0xFF0D4BCC)
-                                                      : const Color(0xFFCBD8E2),
-                                                  width: isCurrent ? 2 : 1,
-                                                ),
-                                                borderRadius: BorderRadius.circular(12),
-                                              ),
-                                              child: Text(
-                                                '${index + 1}',
-                                                style: TextStyle(
-                                                  color: isAnswered
-                                                      ? Colors.white
-                                                      : const Color(0xFF1F3B5A),
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ],
-                                  ),
+                              child: Text(
+                                '${index + 1}',
+                                style: TextStyle(
+                                  color: isCurrent || isAnswered
+                                      ? (isCurrent ? Colors.white : const Color(0xFF0D4BCC))
+                                      : const Color(0xFF1F3B5A),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
                                 ),
                               ),
                             ),
                           );
-                        },
-                        child: Container(
-                          width: 110,
-                          height: 52,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF5F9FC),
-                            border: Border.all(color: const Color(0xFFBBD3E2)),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${_currentIndex + 1}-$questionCount',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xFF0D4BCC),
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              const Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                color: Color(0xFF0D4BCC),
-                                size: 22,
-                              ),
-                            ],
-                          ),
-                        ),
+                        }),
                       ),
                     ),
                   ],
