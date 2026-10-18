@@ -1332,77 +1332,88 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: OutlinedButton(
-                        onPressed: _skipQuestion,
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: const Size(0, 52),
-                          foregroundColor: const Color(0xFF0d4bcc),
-                          side: const BorderSide(color: Color(0xFFdfe7ee)),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 180),
+                        child: OutlinedButton(
+                          onPressed: _skipQuestion,
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: const Size(0, 46),
+                            foregroundColor: const Color(0xFF0d4bcc),
+                            side: const BorderSide(color: Color(0xFFdfe7ee)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            backgroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
                           ),
-                          backgroundColor: Colors.white,
-                        ),
-                        child: const Text(
-                          'Skip for later',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
+                          child: const Text(
+                            'Skip for later',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 8),
                     Expanded(
-                      child: ElevatedButton(
-                        onPressed: _instantFeedbackMode
-                            ? () {
-                                if (_selectedAnswers.containsKey(_currentIndex)) {
-                                  _advanceQuestion();
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 180),
+                        child: ElevatedButton(
+                          onPressed: _instantFeedbackMode
+                              ? () {
+                                  if (_selectedAnswers.containsKey(_currentIndex)) {
+                                    _advanceQuestion();
+                                  }
                                 }
-                              }
-                            : _advanceQuestion,
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(0, 52),
-                          backgroundColor: const Color(0xFF0d4bcc),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                              : _advanceQuestion,
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(0, 46),
+                            backgroundColor: const Color(0xFF0d4bcc),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                          ),
+                          child: const Text(
+                            'Continue →',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
-                        child: const Text(
-                          'Continue →',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 180),
+                        child: OutlinedButton(
+                          onPressed: _finishAssessment,
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: const Size(0, 46),
+                            foregroundColor: const Color(0xFF0d4bcc),
+                            side: const BorderSide(color: Color(0xFF0d4bcc)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            backgroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                          ),
+                          child: const Text(
+                            'End Assessment',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ],
-                ),
-                const SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: _finishAssessment,
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: const Size(0, 48),
-                      foregroundColor: const Color(0xFF0d4bcc),
-                      side: const BorderSide(color: Color(0xFF0d4bcc)),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: const Text(
-                      'End Assessment',
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
