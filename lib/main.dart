@@ -609,7 +609,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
           setState(() {
             _timeRemaining = 0;
           });
-          _advanceQuestion(forceSkip: true);
+          _finishAssessment(forceSubmit: true);
         }
         return;
       }
@@ -622,10 +622,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
 
   void _advanceQuestion({bool forceSkip = false}) {
     if (_currentIndex >= _questionBank.length - 1) {
-      _timer?.cancel();
-      setState(() {
-        _showResults = true;
-      });
+      _finishAssessment(forceSubmit: forceSkip);
       return;
     }
 
@@ -697,6 +694,62 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       _timedMode = false;
       _instantFeedbackMode = false;
       _timeRemaining = 60;
+    });
+  }
+
+  int get unansweredCount => questionCount - _selectedAnswers.length;
+
+  List<int> get unansweredIndices {
+    final indices = <int>[];
+    for (var i = 0; i < questionCount; i++) {
+      if (!_selectedAnswers.containsKey(i)) {
+        indices.add(i);
+      }
+    }
+    return indices;
+  }
+
+  void _finishAssessment({bool forceSubmit = false}) {
+    final unanswered = unansweredCount;
+    if (!forceSubmit && unanswered > 0) {
+      showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          title: const Text('Unanswered questions'),
+          content: Text(
+            'You have $unanswered unanswered question${unanswered == 1 ? '' : 's'}. Would you like to review them or submit your test?',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                final reviewIndex = unansweredIndices.first;
+                setState(() {
+                  _currentIndex = reviewIndex;
+                });
+              },
+              child: const Text('Review'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _timer?.cancel();
+                setState(() {
+                  _showResults = true;
+                });
+              },
+              child: const Text('Submit'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
+    _timer?.cancel();
+    setState(() {
+      _showResults = true;
     });
   }
 
