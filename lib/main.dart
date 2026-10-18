@@ -1219,20 +1219,16 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                                               ),
                                               borderRadius: BorderRadius.circular(12),
                                             ),
-                                            child: isAnswered
-                                                ? const Icon(
-                                                    Icons.check,
-                                                    color: Colors.white,
-                                                    size: 22,
-                                                  )
-                                                : Text(
-                                                    '${index + 1}',
-                                                    style: const TextStyle(
-                                                      color: Color(0xFF1F3B5A),
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 15,
-                                                    ),
-                                                  ),
+                                            child: Text(
+                                              '${index + 1}',
+                                              style: TextStyle(
+                                                color: isAnswered
+                                                    ? Colors.white
+                                                    : const Color(0xFF1F3B5A),
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 15,
+                                              ),
+                                            ),
                                           ),
                                         );
                                       }),
