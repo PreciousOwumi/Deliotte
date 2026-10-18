@@ -699,6 +699,12 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
 
   int get unansweredCount => questionCount - _selectedAnswers.length;
 
+  String _formatTimer(int totalSeconds) {
+    final minutes = totalSeconds ~/ 60;
+    final seconds = totalSeconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
+
   List<int> get unansweredIndices {
     final indices = <int>[];
     for (var i = 0; i < questionCount; i++) {
@@ -1174,141 +1180,153 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                       ),
                     ),
                     if (_timedMode)
-                      Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 4),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: _timeRemaining <= 10
-                              ? const Color(0xFFFFE9E9)
-                              : const Color(0xFFEAF3FF),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: _timeRemaining <= 10
-                                ? Colors.red.shade300
-                                : const Color(0xFFBFD5F3),
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.timer_rounded,
-                              size: 18,
-                              color: _timeRemaining <= 10
-                                  ? Colors.red
-                                  : const Color(0xFF0D4BCC),
+                      Flexible(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 8, right: 8, top: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
                             ),
-                            const SizedBox(width: 6),
-                            Text(
-                              '$_timeRemaining s',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
+                            constraints: const BoxConstraints(minWidth: 90),
+                            decoration: BoxDecoration(
+                              color: _timeRemaining <= 10
+                                  ? const Color(0xFFFFE9E9)
+                                  : const Color(0xFFEAF3FF),
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
                                 color: _timeRemaining <= 10
-                                    ? Colors.red
-                                    : const Color(0xFF0D4BCC),
+                                    ? Colors.red.shade300
+                                    : const Color(0xFFBFD5F3),
+                                width: 1,
                               ),
                             ),
-                          ],
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.timer_rounded,
+                                    size: 18,
+                                    color: _timeRemaining <= 10
+                                        ? Colors.red
+                                        : const Color(0xFF0D4BCC),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    _formatTimer(_timeRemaining),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: _timeRemaining <= 10
+                                          ? Colors.red
+                                          : const Color(0xFF0D4BCC),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    InkWell(
-                      onTap: () {
-                        showDialog<void>(
-                          context: context,
-                          builder: (context) => Dialog(
-                            backgroundColor: const Color(0xFFF8FBFE),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 440),
-                              child: Padding(
-                                padding: const EdgeInsets.all(18),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Wrap(
-                                      spacing: 10,
-                                      runSpacing: 10,
-                                      children: List.generate(questionCount, (index) {
-                                        final isAnswered = _selectedAnswers.containsKey(index);
-                                        final isCurrent = index == _currentIndex;
-                                        return InkWell(
-                                          onTap: () {
-                                            Navigator.of(context).pop();
-                                            setState(() {
-                                              _currentIndex = index;
-                                            });
-                                          },
-                                          child: Container(
-                                            width: 40,
-                                            height: 40,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              color: isAnswered
-                                                  ? const Color(0xFF0D4BCC)
-                                                  : Colors.white,
-                                              border: Border.all(
-                                                color: isCurrent
-                                                    ? const Color(0xFF0D4BCC)
-                                                    : const Color(0xFFCBD8E2),
-                                                width: isCurrent ? 2 : 1,
-                                              ),
-                                              borderRadius: BorderRadius.circular(12),
-                                            ),
-                                            child: Text(
-                                              '${index + 1}',
-                                              style: TextStyle(
+                    Container(
+                      margin: const EdgeInsets.only(top: 2),
+                      child: InkWell(
+                        onTap: () {
+                          showDialog<void>(
+                            context: context,
+                            builder: (context) => Dialog(
+                              backgroundColor: const Color(0xFFF8FBFE),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(maxWidth: 440),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Wrap(
+                                        spacing: 10,
+                                        runSpacing: 10,
+                                        children: List.generate(questionCount, (index) {
+                                          final isAnswered = _selectedAnswers.containsKey(index);
+                                          final isCurrent = index == _currentIndex;
+                                          return InkWell(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                              setState(() {
+                                                _currentIndex = index;
+                                              });
+                                            },
+                                            child: Container(
+                                              width: 40,
+                                              height: 40,
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
                                                 color: isAnswered
-                                                    ? Colors.white
-                                                    : const Color(0xFF1F3B5A),
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 15,
+                                                    ? const Color(0xFF0D4BCC)
+                                                    : Colors.white,
+                                                border: Border.all(
+                                                  color: isCurrent
+                                                      ? const Color(0xFF0D4BCC)
+                                                      : const Color(0xFFCBD8E2),
+                                                  width: isCurrent ? 2 : 1,
+                                                ),
+                                                borderRadius: BorderRadius.circular(12),
+                                              ),
+                                              child: Text(
+                                                '${index + 1}',
+                                                style: TextStyle(
+                                                  color: isAnswered
+                                                      ? Colors.white
+                                                      : const Color(0xFF1F3B5A),
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 15,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      }),
-                                    ),
-                                  ],
+                                          );
+                                        }),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
+                          );
+                        },
+                        child: Container(
+                          width: 110,
+                          height: 52,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF5F9FC),
+                            border: Border.all(color: const Color(0xFFBBD3E2)),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                        );
-                      },
-                      child: Container(
-                        width: 110,
-                        height: 52,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF5F9FC),
-                          border: Border.all(color: const Color(0xFFBBD3E2)),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '${_currentIndex + 1}-$questionCount',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF0D4BCC),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${_currentIndex + 1}-$questionCount',
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF0D4BCC),
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 8),
-                            const Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: Color(0xFF0D4BCC),
-                              size: 22,
-                            ),
-                          ],
+                              const SizedBox(width: 8),
+                              const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: Color(0xFF0D4BCC),
+                                size: 22,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
