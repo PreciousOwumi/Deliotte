@@ -1009,94 +1009,96 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(color: const Color(0xFFdfe7ee)),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${index + 1}. ${item.prompt}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF1F2430),
+                          child: SelectionArea(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${index + 1}. ${item.prompt}',
+                                  style: const TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xFF1F2430),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 12),
-                              ...List.generate(item.options.length, (
-                                optionIndex,
-                              ) {
-                                final isCorrect =
-                                    item.correctIndex == optionIndex;
-                                final isSelected = selectedIndex == optionIndex;
-                                final isWrongSelection =
-                                    isSelected && !isCorrect;
-                                final borderColor = isCorrect
-                                    ? Colors.green
-                                    : isWrongSelection
-                                    ? Colors.red
-                                    : const Color(0xFFE6EAF1);
-                                final fillColor = isCorrect
-                                    ? const Color(0xFFE8F7EE)
-                                    : isWrongSelection
-                                    ? const Color(0xFFFDECEC)
-                                    : Colors.white;
-                                final letterBg = isCorrect
-                                    ? Colors.green
-                                    : isWrongSelection
-                                    ? Colors.red
-                                    : const Color(0xFFedf0f2);
-                                final letterText =
-                                    isCorrect || isWrongSelection || isSelected
-                                    ? Colors.white
-                                    : const Color(0xFF243447);
+                                const SizedBox(height: 12),
+                                ...List.generate(item.options.length, (
+                                  optionIndex,
+                                ) {
+                                  final isCorrect =
+                                      item.correctIndex == optionIndex;
+                                  final isSelected = selectedIndex == optionIndex;
+                                  final isWrongSelection =
+                                      isSelected && !isCorrect;
+                                  final borderColor = isCorrect
+                                      ? Colors.green
+                                      : isWrongSelection
+                                      ? Colors.red
+                                      : const Color(0xFFE6EAF1);
+                                  final fillColor = isCorrect
+                                      ? const Color(0xFFE8F7EE)
+                                      : isWrongSelection
+                                      ? const Color(0xFFFDECEC)
+                                      : Colors.white;
+                                  final letterBg = isCorrect
+                                      ? Colors.green
+                                      : isWrongSelection
+                                      ? Colors.red
+                                      : const Color(0xFFedf0f2);
+                                  final letterText =
+                                      isCorrect || isWrongSelection || isSelected
+                                      ? Colors.white
+                                      : const Color(0xFF243447);
 
-                                return Container(
-                                  margin: const EdgeInsets.only(bottom: 8),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: fillColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      color: borderColor,
-                                      width: 1.5,
+                                  return Container(
+                                    margin: const EdgeInsets.only(bottom: 8),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 10,
                                     ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: 28,
-                                        height: 28,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          color: letterBg,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Text(
-                                          String.fromCharCode(65 + optionIndex),
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700,
-                                            color: letterText,
+                                    decoration: BoxDecoration(
+                                      color: fillColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: borderColor,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 28,
+                                          height: 28,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: letterBg,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Text(
+                                            String.fromCharCode(65 + optionIndex),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700,
+                                              color: letterText,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Expanded(
-                                        child: Text(
-                                          item.options[optionIndex],
-                                          style: const TextStyle(
-                                            fontSize: 15,
-                                            color: Color(0xFF1F2430),
+                                        const SizedBox(width: 12),
+                                        Expanded(
+                                          child: Text(
+                                            item.options[optionIndex],
+                                            style: const TextStyle(
+                                              fontSize: 15,
+                                              color: Color(0xFF1F2430),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }),
-                            ],
+                                      ],
+                                    ),
+                                  );
+                                }),
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -1280,45 +1282,50 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                   color: const Color(0xFFD7E3EC),
                 ),
                 const SizedBox(height: 24),
-                Text(
-                  '${_currentIndex + 1}. ${question.prompt}',
-                  softWrap: true,
-                  overflow: TextOverflow.visible,
-                  style: TextStyle(
-                    fontSize: isMobile ? 20 : 26,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF1F2F3D),
-                    height: 1.35,
-                  ),
-                ),
-                const SizedBox(height: 18),
-                const Text(
-                  'Select one answer.',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Color(0xFF4E6272),
-                  ),
-                ),
-                const SizedBox(height: 18),
                 Expanded(
-                  child: ListView(
+                  child: SingleChildScrollView(
                     padding: EdgeInsets.zero,
-                    children: List.generate(question.options.length, (index) {
-                      final letter = String.fromCharCode(65 + index);
-                      final selected = _selectedAnswers[_currentIndex] == index;
-                      final isCorrectOption = question.correctIndex == index;
-                      final showReveal =
-                          _instantFeedbackMode &&
-                          _selectedAnswers.containsKey(_currentIndex);
-                      return _AssessmentOptionButton(
-                        letter: letter,
-                        label: question.options[index],
-                        selected: selected,
-                        isCorrectAnswer: isCorrectOption,
-                        showCorrectAnswer: showReveal,
-                        onTap: () => _selectOption(index),
-                      );
-                    }),
+                    child: SelectionArea(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${_currentIndex + 1}. ${question.prompt}',
+                            style: TextStyle(
+                              fontSize: isMobile ? 20 : 26,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xFF1F2F3D),
+                              height: 1.35,
+                            ),
+                          ),
+                          const SizedBox(height: 18),
+                          const Text(
+                            'Select one answer.',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF4E6272),
+                            ),
+                          ),
+                          const SizedBox(height: 18),
+                          ...List.generate(question.options.length, (index) {
+                            final letter = String.fromCharCode(65 + index);
+                            final selected = _selectedAnswers[_currentIndex] == index;
+                            final isCorrectOption = question.correctIndex == index;
+                            final showReveal =
+                                _instantFeedbackMode &&
+                                _selectedAnswers.containsKey(_currentIndex);
+                            return _AssessmentOptionButton(
+                              letter: letter,
+                              label: question.options[index],
+                              selected: selected,
+                              isCorrectAnswer: isCorrectOption,
+                              showCorrectAnswer: showReveal,
+                              onTap: () => _selectOption(index),
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 18),
@@ -1508,8 +1515,6 @@ class _AssessmentOptionButtonState extends State<_AssessmentOptionButton>
                   Expanded(
                     child: Text(
                       widget.label,
-                      softWrap: true,
-                      overflow: TextOverflow.visible,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
