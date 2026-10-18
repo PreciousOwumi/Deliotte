@@ -583,7 +583,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
   bool _showInstructions = true;
   bool _timedMode = false;
   bool _instantFeedbackMode = false;
-  int _timeRemaining = 60;
+  int _timeRemaining = 50 * 60;
   Timer? _timer;
 
   int get questionCount => _questionBank.length;
@@ -630,7 +630,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     setState(() {
       _currentIndex++;
       if (_timedMode) {
-        _timeRemaining = 60;
+        _timeRemaining = 50 * 60;
       }
     });
     if (_timedMode) {
@@ -670,7 +670,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       _showResults = false;
       _currentIndex = 0;
       _selectedAnswers.clear();
-      _timeRemaining = 60;
+      _timeRemaining = 50 * 60;
     });
     if (_timedMode) {
       _startTimer();
@@ -693,7 +693,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       _showInstructions = true;
       _timedMode = false;
       _instantFeedbackMode = false;
-      _timeRemaining = 60;
+      _timeRemaining = 50 * 60;
     });
   }
 
