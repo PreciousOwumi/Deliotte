@@ -1173,6 +1173,49 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                         ],
                       ),
                     ),
+                    if (_timedMode)
+                      Container(
+                        margin: const EdgeInsets.only(left: 8, right: 8, top: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: _timeRemaining <= 10
+                              ? const Color(0xFFFFE9E9)
+                              : const Color(0xFFEAF3FF),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: _timeRemaining <= 10
+                                ? Colors.red.shade300
+                                : const Color(0xFFBFD5F3),
+                            width: 1,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.timer_rounded,
+                              size: 18,
+                              color: _timeRemaining <= 10
+                                  ? Colors.red
+                                  : const Color(0xFF0D4BCC),
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              '$_timeRemaining s',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: _timeRemaining <= 10
+                                    ? Colors.red
+                                    : const Color(0xFF0D4BCC),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     InkWell(
                       onTap: () {
                         showDialog<void>(
