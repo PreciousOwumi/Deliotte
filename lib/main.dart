@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 
@@ -178,7 +178,8 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     ),
     AssessmentQuestion(
       questionType: 'READING COMPREHENSION',
-      prompt: 'The passage suggests which of the following about the service workers in India?',
+      prompt:
+          'The passage suggests which of the following about the service workers in India?',
       options: [
         'The number of service workers may be underestimated by the definition of services used by the government.',
         'There were fewer service workers than agricultural workers before 2023',
@@ -218,14 +219,24 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       questionType: 'LOGIC',
       prompt:
           'The statement "If it is raining, then the ground is wet" is given. If we know that the ground is not wet, what can we logically conclude?',
-      options: ['It is raining.', 'It is not raining.', 'The ground is wet.', 'We cannot conclude anything about the rain.'],
+      options: [
+        'It is raining.',
+        'It is not raining.',
+        'The ground is wet.',
+        'We cannot conclude anything about the rain.',
+      ],
       correctIndex: 1,
     ),
     AssessmentQuestion(
       questionType: 'LOGIC',
       prompt:
           'All birds have feathers. Penguins are birds. Therefore, penguins have feathers. This is an example of:',
-      options: ['Logical deduction.', 'Deductive reasoning.', 'A valid argument.', 'Sound logic.'],
+      options: [
+        'Logical deduction.',
+        'Deductive reasoning.',
+        'A valid argument.',
+        'Sound logic.',
+      ],
       correctIndex: 1,
     ),
     AssessmentQuestion(
@@ -314,13 +325,20 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     ),
     AssessmentQuestion(
       questionType: 'LOGIC',
-      prompt: 'All engineers are logical thinkers. Sarah is a logical thinker. What can be definitively concluded about Sarah?',
-      options: ['Sarah is an engineer.', 'Sarah is not an engineer.', 'All logical thinkers are engineers.', 'Sarah might be an engineer.'],
+      prompt:
+          'All engineers are logical thinkers. Sarah is a logical thinker. What can be definitively concluded about Sarah?',
+      options: [
+        'Sarah is an engineer.',
+        'Sarah is not an engineer.',
+        'All logical thinkers are engineers.',
+        'Sarah might be an engineer.',
+      ],
       correctIndex: 3,
     ),
     AssessmentQuestion(
       questionType: 'AVERAGE SPEED',
-      prompt: 'A runner completes a 10 km race in 40 minutes. What is their average speed in km/h?',
+      prompt:
+          'A runner completes a 10 km race in 40 minutes. What is their average speed in km/h?',
       options: ['15 km/h', '12.5 km/h', '20 km/h', '17.5 km/h'],
       correctIndex: 0,
     ),
@@ -328,7 +346,12 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       questionType: 'PERCENTAGES',
       prompt:
           'If a company\'s revenue grows by 15% one year and then declines by 10% the next year, what is the overall percentage change in revenue over the two years?',
-      options: ['5% increase', '1.5% increase', '3.5% increase', '2.5% increase'],
+      options: [
+        '5% increase',
+        '1.5% increase',
+        '3.5% increase',
+        '2.5% increase',
+      ],
       correctIndex: 2,
     ),
     AssessmentQuestion(
@@ -340,13 +363,15 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     ),
     AssessmentQuestion(
       questionType: 'PERCENTAGES',
-      prompt: 'If a number is increased by 20% and then decreased by 20%, what is the net percentage change?',
+      prompt:
+          'If a number is increased by 20% and then decreased by 20%, what is the net percentage change?',
       options: ['4% increase', 'No change', '2% decrease', '4% decrease'],
       correctIndex: 3,
     ),
     AssessmentQuestion(
       questionType: 'AVERAGE',
-      prompt: 'A researcher is calculating the mean of a dataset. If the sum of all observations is 750 and there are 15 observations, what is the mean?',
+      prompt:
+          'A researcher is calculating the mean of a dataset. If the sum of all observations is 750 and there are 15 observations, what is the mean?',
       options: ['45', '50', '60', '55'],
       correctIndex: 1,
     ),
@@ -368,12 +393,18 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       questionType: 'AVERAGE SPEED',
       prompt:
           'A car travels the first 100 km of a journey at 50 km/h and the next 100 km at 75 km/h. Calculate the average speed for the entire 200 km journey.',
-      options: ['Approximately 60 km/h', 'A speed of 65 km/h', 'Around 58.3 km/h', 'Precisely 62.5 km/h'],
+      options: [
+        'Approximately 60 km/h',
+        'A speed of 65 km/h',
+        'Around 58.3 km/h',
+        'Precisely 62.5 km/h',
+      ],
       correctIndex: 0,
     ),
     AssessmentQuestion(
       questionType: 'EUROPEAN UNION',
-      prompt: 'All but one of the below countries is not bound by the European Union Treaties?',
+      prompt:
+          'All but one of the below countries is not bound by the European Union Treaties?',
       options: ['Denmark', 'Luxembourg', 'Cyprus', 'Germany', 'Slovakia'],
       correctIndex: 0,
     ),
@@ -381,7 +412,12 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       questionType: 'STATISTICS',
       prompt:
           'If the mean of a dataset is 50 and the standard deviation is 5, and each data point is multiplied by 3, what will be the new mean and standard deviation?',
-      options: ['New mean 150, new SD 5', 'Mean 50, SD 15', 'Mean 50, SD 5', 'Mean 150, SD 15'],
+      options: [
+        'New mean 150, new SD 5',
+        'Mean 50, SD 15',
+        'Mean 50, SD 5',
+        'Mean 150, SD 15',
+      ],
       correctIndex: 3,
     ),
     AssessmentQuestion(
@@ -399,12 +435,19 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     AssessmentQuestion(
       questionType: 'UN',
       prompt: 'Which of the following is a not an organ of the United Nations',
-      options: ['The Executive Council', 'The International Court of Justice', 'The Economic and Social Council', 'The UN Secretariat', 'The Trusteeship Council'],
+      options: [
+        'The Executive Council',
+        'The International Court of Justice',
+        'The Economic and Social Council',
+        'The UN Secretariat',
+        'The Trusteeship Council',
+      ],
       correctIndex: 0,
     ),
     AssessmentQuestion(
       questionType: 'TRADE',
-      prompt: 'Which organization(s) suggested alternative trade alignments due to U.S. tariff pressures?',
+      prompt:
+          'Which organization(s) suggested alternative trade alignments due to U.S. tariff pressures?',
       options: ['OECD', 'WTO', 'COMESA', 'UNCTAD', 'None of the above'],
       correctIndex: 2,
     ),
@@ -432,7 +475,13 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       questionType: 'TECH POLICY',
       prompt:
           'Which two tech giants faced jury verdicts that could reshape Section 230 protections?',
-      options: ['Apple & Amazon', 'Netflix & Tesla', 'Meta & Google', 'Tesla & Meta', 'IBM & Intel'],
+      options: [
+        'Apple & Amazon',
+        'Netflix & Tesla',
+        'Meta & Google',
+        'Tesla & Meta',
+        'IBM & Intel',
+      ],
       correctIndex: 2,
     ),
     AssessmentQuestion(
@@ -449,8 +498,15 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     ),
     AssessmentQuestion(
       questionType: 'TECHNOLOGY',
-      prompt: 'Which new material(s) breakthrough could supercharge 6G technology?',
-      options: ['Graphene Foam', 'Carbon Nanotube Coating', 'Liquid Metal Chips', 'Quantum Fibre Mesh', 'A, B, & C'],
+      prompt:
+          'Which new material(s) breakthrough could supercharge 6G technology?',
+      options: [
+        'Graphene Foam',
+        'Carbon Nanotube Coating',
+        'Liquid Metal Chips',
+        'Quantum Fibre Mesh',
+        'A, B, & C',
+      ],
       correctIndex: 4,
     ),
     AssessmentQuestion(
@@ -606,7 +662,10 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
     _advanceQuestion();
   }
 
-  void _beginAssessment({required bool timedMode, required bool instantFeedbackMode}) {
+  void _beginAssessment({
+    required bool timedMode,
+    required bool instantFeedbackMode,
+  }) {
     setState(() {
       _timedMode = timedMode;
       _instantFeedbackMode = instantFeedbackMode;
@@ -649,13 +708,17 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final shellWidth = screenWidth < 760 ? screenWidth - 24 : 1120.0;
+    final shellWidthClamped = shellWidth.clamp(300.0, 1120.0);
+
     if (_showInstructions) {
       return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
           child: Container(
-            width: 1100,
-            height: 680,
+            width: shellWidthClamped,
+            constraints: const BoxConstraints(maxHeight: 680),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: const Color(0xFFdfe7ee), width: 2),
@@ -669,7 +732,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsets.all(40),
+              padding: EdgeInsets.all(screenWidth < 760 ? 20 : 40),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -816,8 +879,8 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
         backgroundColor: Colors.white,
         body: Center(
           child: Container(
-            width: 1200,
-            height: 760,
+            width: shellWidthClamped,
+            constraints: const BoxConstraints(maxHeight: 760),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: const Color(0xFFdfe7ee), width: 2),
@@ -831,7 +894,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsets.all(24),
+              padding: EdgeInsets.all(screenWidth < 760 ? 16 : 24),
               child: Column(
                 children: [
                   const Text(
@@ -854,17 +917,28 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                   const SizedBox(height: 12),
                   Text(
                     'You answered $answeredCount / $questionCount questions.',
-                    style: const TextStyle(fontSize: 22, color: Color(0xFF1d2733)),
+                    style: const TextStyle(
+                      fontSize: 22,
+                      color: Color(0xFF1d2733),
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'Correct answers: $score',
-                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Color(0xFF1d2733)),
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF1d2733),
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'Percentage: $percentage%',
-                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: Color(0xFF0d4bcc)),
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF0d4bcc),
+                    ),
                   ),
                   const SizedBox(height: 16),
                   Expanded(
@@ -893,36 +967,47 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                                 ),
                               ),
                               const SizedBox(height: 12),
-                              ...List.generate(item.options.length, (optionIndex) {
-                                final isCorrect = item.correctIndex == optionIndex;
+                              ...List.generate(item.options.length, (
+                                optionIndex,
+                              ) {
+                                final isCorrect =
+                                    item.correctIndex == optionIndex;
                                 final isSelected = selectedIndex == optionIndex;
-                                final isWrongSelection = isSelected && !isCorrect;
+                                final isWrongSelection =
+                                    isSelected && !isCorrect;
                                 final borderColor = isCorrect
                                     ? Colors.green
                                     : isWrongSelection
-                                        ? Colors.red
-                                        : const Color(0xFFE6EAF1);
+                                    ? Colors.red
+                                    : const Color(0xFFE6EAF1);
                                 final fillColor = isCorrect
                                     ? const Color(0xFFE8F7EE)
                                     : isWrongSelection
-                                        ? const Color(0xFFFDECEC)
-                                        : Colors.white;
+                                    ? const Color(0xFFFDECEC)
+                                    : Colors.white;
                                 final letterBg = isCorrect
                                     ? Colors.green
                                     : isWrongSelection
-                                        ? Colors.red
-                                        : const Color(0xFFedf0f2);
-                                final letterText = isCorrect || isWrongSelection || isSelected
+                                    ? Colors.red
+                                    : const Color(0xFFedf0f2);
+                                final letterText =
+                                    isCorrect || isWrongSelection || isSelected
                                     ? Colors.white
                                     : const Color(0xFF243447);
 
                                 return Container(
                                   margin: const EdgeInsets.only(bottom: 8),
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 10,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: fillColor,
                                     borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: borderColor, width: 1.5),
+                                    border: Border.all(
+                                      color: borderColor,
+                                      width: 1.5,
+                                    ),
                                   ),
                                   child: Row(
                                     children: [
@@ -988,8 +1073,8 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          width: 1120,
-          height: 700,
+          width: shellWidthClamped,
+          constraints: const BoxConstraints(maxHeight: 700),
           decoration: BoxDecoration(
             color: const Color(0xFFF7F8FA),
             borderRadius: BorderRadius.circular(16),
@@ -1002,7 +1087,12 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 32, right: 34, top: 26, bottom: 18),
+            padding: EdgeInsets.only(
+              left: screenWidth < 760 ? 18 : 32,
+              right: screenWidth < 760 ? 18 : 34,
+              top: 26,
+              bottom: 18,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -1016,23 +1106,31 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                         color: Color(0xFF0d4bcc),
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(Icons.play_arrow_rounded, size: 14, color: Colors.white),
+                      child: const Icon(
+                        Icons.play_arrow_rounded,
+                        size: 14,
+                        color: Colors.white,
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
                         'QUESTION TYPE-$questionTypeLabel',
-                        style: const TextStyle(
-                          fontSize: 28,
+                        softWrap: true,
+                        style: TextStyle(
+                          fontSize: screenWidth < 760 ? 20 : 28,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.8,
-                          color: Color(0xFF1B2731),
+                          color: const Color(0xFF1B2731),
                         ),
                       ),
                     ),
                     if (_timedMode)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(999),
@@ -1066,18 +1164,15 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 18),
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxHeight: 120),
-                          child: Text(
-                            '${_currentIndex + 1}. ${question.prompt}',
-                            maxLines: 4,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xFF1C212C),
-                              height: 1.2,
-                            ),
+                        child: Text(
+                          '${_currentIndex + 1}. ${question.prompt}',
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
+                          style: TextStyle(
+                            fontSize: screenWidth < 760 ? 18 : 22,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF1C212C),
+                            height: 1.35,
                           ),
                         ),
                       ),
@@ -1088,11 +1183,17 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                           child: SingleChildScrollView(
                             padding: const EdgeInsets.only(bottom: 8),
                             child: Column(
-                              children: List.generate(question.options.length, (index) {
+                              children: List.generate(question.options.length, (
+                                index,
+                              ) {
                                 final letter = String.fromCharCode(65 + index);
-                                final selected = _selectedAnswers[_currentIndex] == index;
-                                final isCorrectOption = question.correctIndex == index;
-                                final showReveal = _instantFeedbackMode && _selectedAnswers.containsKey(_currentIndex);
+                                final selected =
+                                    _selectedAnswers[_currentIndex] == index;
+                                final isCorrectOption =
+                                    question.correctIndex == index;
+                                final showReveal =
+                                    _instantFeedbackMode &&
+                                    _selectedAnswers.containsKey(_currentIndex);
                                 return _AssessmentOptionButton(
                                   letter: letter,
                                   label: question.options[index],
@@ -1110,13 +1211,15 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: SizedBox(
-                          width: 720,
+                          width: screenWidth < 760 ? double.infinity : 720,
                           child: Wrap(
                             spacing: 4,
                             runSpacing: 4,
                             alignment: WrapAlignment.end,
                             children: List.generate(questionCount, (index) {
-                              final answered = _selectedAnswers.containsKey(index);
+                              final answered = _selectedAnswers.containsKey(
+                                index,
+                              );
                               final selected = _currentIndex == index;
                               return GestureDetector(
                                 onTap: () {
@@ -1137,10 +1240,14 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                                   height: 24,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    color: answered ? const Color(0xFF0d4bcc) : Colors.white,
+                                    color: answered
+                                        ? const Color(0xFF0d4bcc)
+                                        : Colors.white,
                                     borderRadius: BorderRadius.circular(6),
                                     border: Border.all(
-                                      color: selected ? const Color(0xFF0d4bcc) : const Color(0xFFdfe7ee),
+                                      color: selected
+                                          ? const Color(0xFF0d4bcc)
+                                          : const Color(0xFFdfe7ee),
                                       width: selected ? 2 : 1,
                                     ),
                                   ),
@@ -1149,7 +1256,9 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                                     style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
-                                      color: answered ? Colors.white : const Color(0xFF1F2430),
+                                      color: answered
+                                          ? Colors.white
+                                          : const Color(0xFF1F2430),
                                     ),
                                   ),
                                 ),
@@ -1161,15 +1270,19 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                       const SizedBox(height: 12),
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                        child: Wrap(
+                          alignment: WrapAlignment.end,
+                          spacing: 12,
+                          runSpacing: 12,
                           children: [
                             OutlinedButton(
                               onPressed: _skipQuestion,
                               style: OutlinedButton.styleFrom(
                                 minimumSize: const Size(170, 46),
                                 foregroundColor: const Color(0xFF0d4bcc),
-                                side: const BorderSide(color: Color(0xFFdfe7ee)),
+                                side: const BorderSide(
+                                  color: Color(0xFFdfe7ee),
+                                ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14),
                                 ),
@@ -1182,11 +1295,12 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 12),
                             ElevatedButton(
                               onPressed: _instantFeedbackMode
                                   ? () {
-                                      if (_selectedAnswers.containsKey(_currentIndex)) {
+                                      if (_selectedAnswers.containsKey(
+                                        _currentIndex,
+                                      )) {
                                         _advanceQuestion();
                                       }
                                     }
@@ -1240,7 +1354,8 @@ class _AssessmentOptionButton extends StatefulWidget {
   final VoidCallback onTap;
 
   @override
-  State<_AssessmentOptionButton> createState() => _AssessmentOptionButtonState();
+  State<_AssessmentOptionButton> createState() =>
+      _AssessmentOptionButtonState();
 }
 
 class _AssessmentOptionButtonState extends State<_AssessmentOptionButton>
@@ -1260,30 +1375,33 @@ class _AssessmentOptionButtonState extends State<_AssessmentOptionButton>
 
   @override
   Widget build(BuildContext context) {
-    final bool isWrongSelection = widget.showCorrectAnswer && widget.selected && !widget.isCorrectAnswer;
-    final bool isCorrectChoice = widget.showCorrectAnswer && widget.isCorrectAnswer;
+    final bool isWrongSelection =
+        widget.showCorrectAnswer && widget.selected && !widget.isCorrectAnswer;
+    final bool isCorrectChoice =
+        widget.showCorrectAnswer && widget.isCorrectAnswer;
     final Color borderColor = isCorrectChoice
         ? Colors.green
         : isWrongSelection
-            ? Colors.red
-            : widget.selected
-                ? const Color(0xFF0d4bcc)
-                : const Color(0xFFE6EAF1);
+        ? Colors.red
+        : widget.selected
+        ? const Color(0xFF0d4bcc)
+        : const Color(0xFFE6EAF1);
     final Color fillColor = isCorrectChoice
         ? const Color(0xFFE8F7EE)
         : isWrongSelection
-            ? const Color(0xFFFDECEC)
-            : widget.selected
-                ? const Color(0xFFedf3ff)
-                : Colors.white;
+        ? const Color(0xFFFDECEC)
+        : widget.selected
+        ? const Color(0xFFedf3ff)
+        : Colors.white;
     final Color letterBg = isCorrectChoice
         ? Colors.green
         : isWrongSelection
-            ? Colors.red
-            : widget.selected
-                ? const Color(0xFF0d4bcc)
-                : const Color(0xFFedf0f2);
-    final Color letterText = isCorrectChoice || isWrongSelection || widget.selected
+        ? Colors.red
+        : widget.selected
+        ? const Color(0xFF0d4bcc)
+        : const Color(0xFFedf0f2);
+    final Color letterText =
+        isCorrectChoice || isWrongSelection || widget.selected
         ? Colors.white
         : const Color(0xFF243447);
 
@@ -1302,9 +1420,9 @@ class _AssessmentOptionButtonState extends State<_AssessmentOptionButton>
           return Transform.scale(
             scale: scale,
             child: Container(
-              height: 46,
+              constraints: const BoxConstraints(minHeight: 52),
               margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               decoration: BoxDecoration(
                 color: fillColor,
                 borderRadius: BorderRadius.circular(12),
@@ -1314,18 +1432,24 @@ class _AssessmentOptionButtonState extends State<_AssessmentOptionButton>
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: widget.selected || widget.showCorrectAnswer ? 0.08 : 0.04),
+                    color: Colors.black.withValues(
+                      alpha: widget.selected || widget.showCorrectAnswer
+                          ? 0.08
+                          : 0.04,
+                    ),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
                 ],
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     width: 28,
                     height: 28,
                     alignment: Alignment.center,
+                    margin: const EdgeInsets.only(top: 2),
                     decoration: BoxDecoration(
                       color: letterBg,
                       shape: BoxShape.circle,
@@ -1343,6 +1467,8 @@ class _AssessmentOptionButtonState extends State<_AssessmentOptionButton>
                   Expanded(
                     child: Text(
                       widget.label,
+                      softWrap: true,
+                      overflow: TextOverflow.visible,
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -1412,16 +1538,15 @@ class _ModeCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w800,
-                color: selected ? const Color(0xFF0d4bcc) : const Color(0xFF1d2733),
+                color: selected
+                    ? const Color(0xFF0d4bcc)
+                    : const Color(0xFF1d2733),
               ),
             ),
             const SizedBox(height: 8),
             Text(
               subtitle,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Color(0xFF4f5d6a),
-              ),
+              style: const TextStyle(fontSize: 16, color: Color(0xFF4f5d6a)),
             ),
           ],
         ),
@@ -1429,4 +1554,3 @@ class _ModeCard extends StatelessWidget {
     );
   }
 }
-
