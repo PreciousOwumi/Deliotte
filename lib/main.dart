@@ -626,16 +626,9 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       return;
     }
 
-    _timer?.cancel();
     setState(() {
       _currentIndex++;
-      if (_timedMode) {
-        _timeRemaining = 50 * 60;
-      }
     });
-    if (_timedMode) {
-      _startTimer();
-    }
   }
 
   void _skipQuestion() {
@@ -647,7 +640,6 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       return;
     }
 
-    _timer?.cancel();
     setState(() {
       _selectedAnswers[_currentIndex] = optionIndex;
     });
@@ -819,7 +811,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
                     const Text(
                       'Please read each question carefully and choose the best answer from the options provided.\n\n'
                       '• You may complete the assessment in timed or untimed mode.\n'
-                      '• In timed mode, each question gives you 1 minute.\n'
+                      '• In timed mode, you have 50 minutes to complete the entire assessment.\n'
                       '• You may skip any question and continue when ready.\n'
                       '• At the end, you will see your score and percentage out of 100.',
                       style: TextStyle(
